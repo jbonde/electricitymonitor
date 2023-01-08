@@ -1,5 +1,7 @@
-# electricitymonitor
-A python solution for monitoring electricity meter
+# Electricity Monitor
+
+A python solution for monitoring an electricity meter
+
 How to use a Raspberry Pi for reading a Kamstrup Omnipower Electricity Meter
 
 Realising that the documentation for the different components and packages is very I have made this brief summary of how I managed to pick up readings from my Omnipower Meter with a Raspberry Pi.
@@ -18,9 +20,9 @@ KeyType Generation Key
 
 Should be reformatted to
 
-Key	Type	Generation	Key
-64	1	0x	34706890A462483973431E01C8914E21
-65	1	0x	946F0B5C495176089391783F32C4E33A
+Key	 Type	  Generation	Key
+64	  1	     0x	        34706890A462483973431E01C8914E21
+65	  1	     0x	        946F0B5C495176089391783F32C4E33A
 64 = gpk60 = encryption_key
 65 = gpk61 = authentication_key
 
