@@ -28,13 +28,13 @@ Key	 Type	  Generation	Key
 
 Connect your RPi serial ports to the CCC connector at the Meter like this:
 
-CCC	RPi pin	GPIO	Function (RPi)
-6	6		GND
-2	8	14	Data from RPi (Tx)
-5	10	15	Data from Meter (Rx)
+CCC RPi pin	GPIO	Function (RPi)
+6	  6		          GND
+2	  8	      14	  Data from RPi (Tx)
+5	 10	      15	  Data from Meter (Rx)
  
 
-For a RPi4 (green frame) the above serial port to use is called ttyS0 when listening to the Meter. GPIO14 is not necessary in this setup but can be used for other applications that makes queries for the Meter.
+For a RPi4 the above serial port to use is called ttyS0 when listening to the Meter. GPIO14 is not necessary in this setup but can be used for other applications that makes queries for the Meter.
 
 For listening to the Meter Gurux has a good library that can be installed from https://github.com/Gurux/Gurux.DLMS.Python and they also have an excellent support so sign up at the forum if you have troubles. I didn’t succeed with a RPi3 with Gurux but switching to a RPi4 suddenly made things going.
 
