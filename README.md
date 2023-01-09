@@ -1,7 +1,5 @@
 # Electricity Monitor
 
-A python solution for monitoring an electricity meter
-
 How to use a Raspberry Pi for reading a Kamstrup Omnipower Electricity Meter
 
 Realising that the documentation for the different components and packages is very I have made this brief summary of how I managed to pick up readings from my Omnipower Meter with a Raspberry Pi.
@@ -59,3 +57,8 @@ python main.py -S ‘/dev/ttyS0:2400:8None1’ -B 34706890A462483973431E01C8914E
 In my case I needed to swop -A and -B as encryption_key and authentication_key was mixed up probably by Kamstrup. You will then see readings presented in different formats. Each Data Object has its own ID as can be seen at page 4 in this list: https://radiuselnet.dk/wp-content/uploads/DLMS-COSEM.pdf
 
 Meter status (as seen on the display) and actual power consumption are all represented by number 14 in the list.
+
+My current python script is developed thanks to Gurux (see installation notes at end of code)
+
+
+
