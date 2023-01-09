@@ -59,5 +59,3 @@ Meter status (as seen on the display) and actual power consumption are all repre
 
 My current python script is developed thanks to Gurux (see installation notes at end of code)
 
-
-
