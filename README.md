@@ -32,6 +32,7 @@ Should be reformatted to
 
 Connect your RPi serial port to the CCC connector at the Meter like this:
 
+
 | CCC |	RPipin | GPIO | Function (RPi) |
 | --- | --- | --- | --- |
 |  | 6 | 6 | GND | 
