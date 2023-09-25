@@ -2,11 +2,11 @@
 
 How to use a Raspberry Pi for reading a Kamstrup Omnipower Electricity Meter
 
-Realising that the documentation for the different components and packages is very I have made this brief summary of how I managed to pick up readings from my Omnipower Meter with a Raspberry Pi.
+Realising that the documentation for the different components and packages is very scarce I have made this brief summary of how I managed to pick up readings from my Omnipower Meter with a Raspberry Pi.
 
-For me the interesting electricity data is Meter status (as seen on the display) and actual total power consumption and consumption for each phase.
+For me the interesting electricity data is Meter status (as seen on the display) and actual total power consumption plus consumption for each phase.
 
-I prefer to extract the data as readable raw data so it can be used directly by other applications. Then data can simply be shared with other devices and web services over UDP or as plain csv files etc.
+I prefer to extract the data as readable raw data so it can be used directly by other applications like Home Assistant. Then data can simply be shared with other devices and web services over UDP or as plain csv files etc.
 
 First of all Push messages needs to be enabled from the meter even though the documentation indicates that this is done by default. So contact your power supplier and request push messages and also two keys as the information is encrypted. You will then get a mail from Kamstrup with the keys. It comes in a tabulated setup which will be probably distorted in the mail.
 
@@ -24,11 +24,11 @@ Key		Type	Generation	Key
 64 = gpk60 = encryption_key
 65 = gpk61 = authentication_key
 
-Connect your RPi serial ports to the CCC connector at the Meter like this:
+Connect your RPi serial port to the CCC connector at the Meter like this:
 
 CCC		RPipin		GPIO	Function (RPi)
-6		6					GND
-2		8			14		Data from RPi (Tx)
+6		6				GND
+2		8			 14		Data from RPi (Tx)
 5		10			15		Data from Meter (Rx)
  
 For a RPi4 the above serial port to use is called ttyS0 when listening to the Meter. GPIO14 is not necessary in this setup but can be used for other applications that makes queries for the Meter.
@@ -49,7 +49,7 @@ python main.py -S ‘/dev/ttyS0:2400:8None1’
 
 Please notice 2400 bps is important. The above should give some initial readings (encrypted) to confirm that the connection is working.
 
-Finally run the application with the encryption keys (maybe swop A and B).
+Finally run the application with the encryption keys (maybe you need to swop A and B).
 
 python main.py -S ‘/dev/ttyS0:2400:8None1’ -B 34706890A462483973431E01C8914E21 -A 946F0B5C495176089391783F32C4E33A
 
@@ -59,3 +59,27 @@ Meter status (as seen on the display) and actual power consumption are all repre
 
 My current python script is developed thanks to Gurux (see installation notes at end of code)
 
+For those using HOME ASSISTANT
+As the RPi (hopefully) now broadcasts messages at the same network as your HA, you can create a sensor that listens to UDP. As UDP is not supported as a standard HA-component, this can be done by creating a sensor that activates a python-script every second.
+sensor:
+  - platform: command_line
+    name: Power now UDP
+    unique_id: "power_now_udp"
+    scan_interval: 1  # Set the interval in seconds
+    command: "python3 /config/scripts/powernowudp.py"  
+
+powernowudp.py in a simple form with current power consumption:
+
+import time
+import socket
+
+UDP_IP = ""
+UDP_PORT = 3434 # Meter
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #reuse socket if program is opened after crash
+sock.bind((UDP_IP, UDP_PORT))
+message=[]
+data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+message=data.decode('utf-8')
+powernow=message.split(",")[3]
+print(str(powernow))
