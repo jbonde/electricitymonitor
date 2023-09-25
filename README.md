@@ -20,9 +20,10 @@ So a message like this
 
 Should be reformatted to 
 
-Key		Type	Generation	Key
-64		1		0x			34706890A462483973431E01C8914E21
-65		1		0x			946F0B5C495176089391783F32C4E33A
+| Key | Type |Hex | Generation Key|
+| --- | --- | --- | --- |
+| 64	| 1	| 0x	| 34706890A462483973431E01C8914E21 |
+| 65 | 1	| 0x	| 946F0B5C495176089391783F32C4E33A |
 64 = gpk60 = encryption_key
 65 = gpk61 = authentication_key
 
