@@ -60,8 +60,9 @@ Meter status (as seen on the display) and actual power consumption are all repre
 My current python script is developed thanks to Gurux (see installation notes at end of code)
 
 For those using HOME ASSISTANT
-As the RPi (hopefully) now broadcasts messages at the same network as your HA, you can create a sensor that listens to UDP. As UDP is not supported as a standard HA-component, this can be done by creating a sensor that activates a python-script every second.
+
+As the RPi (hopefully) now broadcasts messages at the same network as your HA, you can create a sensor that listens to UDP. As UDP is not supported as a standard HA-component, this can be done instead by creating a sensor that calls a python-script every second.
 sensor. See configuration.yaml
 
 Then copy content from powernowudp.py to HA and make shure the path is correct in configuration.yaml.
-It's a simple version only showing with current power consumption
+It's a simple version only showing with current power consumption but you can expand for listening to other attributes in the UDP-string.
