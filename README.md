@@ -20,7 +20,7 @@ So a message like this
 
 Should be reformatted to 
 
-| Key | Type |Hex | Generation Key|
+| Key | Type |Hex | Generation Key |
 | --- | --- | --- | --- |
 | 64	| 1	| 0x	| 34706890A462483973431E01C8914E21 |
 | 65 | 1	| 0x	| 946F0B5C495176089391783F32C4E33A |
@@ -32,10 +32,12 @@ Should be reformatted to
 
 Connect your RPi serial port to the CCC connector at the Meter like this:
 
-CCC		RPipin	  GPIO	    Function (RPi)
-6        6        GND
-2        8        14		Data from RPi (Tx)
-5       10        15	    Data from Meter (Rx)
+| CCC |	RPipin | GPIO | Function (RPi) |
+| --- | --- | --- | --- |
+|  | 6 | 6 | GND | 
+| 2 | 8 | 14 | Data from RPi (Tx) |
+| 5 | 10 | 15 | Data from Meter (Rx) | 
+
  
 For a RPi4 the above serial port to use is called ttyS0 when listening to the Meter. GPIO14 is not necessary in this setup but can be used for other applications that makes queries for the Meter.
 
