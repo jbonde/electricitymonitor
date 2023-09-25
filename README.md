@@ -35,7 +35,7 @@ Connect your RPi serial port to the CCC connector at the Meter like this:
 
 | CCC |	RPipin | GPIO | Function (RPi) |
 | --- | --- | --- | --- |
-|  | 6 | 6 | GND | 
+| 6 | 6 | 6 | GND | 
 | 2 | 8 | 14 | Data from RPi (Tx) |
 | 5 | 10 | 15 | Data from Meter (Rx) | 
 
