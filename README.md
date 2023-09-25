@@ -17,6 +17,7 @@ So a message like this
 | 64 | 1 | 0x34706890A462483973431E01C8914E21 |
 | 65 | 1 | 0x946F0B5C495176089391783F32C4E33A |
 
+
 Should be reformatted to 
 
 Key		Type	Generation	Key
