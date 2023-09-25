@@ -61,25 +61,7 @@ My current python script is developed thanks to Gurux (see installation notes at
 
 For those using HOME ASSISTANT
 As the RPi (hopefully) now broadcasts messages at the same network as your HA, you can create a sensor that listens to UDP. As UDP is not supported as a standard HA-component, this can be done by creating a sensor that activates a python-script every second.
-sensor:
-  - platform: command_line
-    name: Power now UDP
-    unique_id: "power_now_udp"
-    scan_interval: 1  # Set the interval in seconds
-    command: "python3 /config/scripts/powernowudp.py"  
+sensor. See configuration.yaml
 
-powernowudp.py in a simple form with current power consumption:
-
-import time
-import socket
-
-UDP_IP = ""
-UDP_PORT = 3434 # Meter
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #reuse socket if program is opened after crash
-sock.bind((UDP_IP, UDP_PORT))
-message=[]
-data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-message=data.decode('utf-8')
-powernow=message.split(",")[3]
-print(str(powernow))
+Then copy content from powernowudp.py to HA and make shure the path is correct in configuration.yaml.
+It's a simple version only showing with current power consumption
