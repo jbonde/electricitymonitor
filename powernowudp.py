@@ -2,7 +2,7 @@ import time
 import socket
 
 UDP_IP = ""
-UDP_PORT = 3434 # Meter
+UDP_PORT = "your selected port number" # Meter
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #reuse socket if program is opened after crash
 sock.bind((UDP_IP, UDP_PORT))
