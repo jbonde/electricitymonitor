@@ -68,7 +68,7 @@ OBISupdated=False # Used to ensure that all OBIS data is updated before first ru
 POWERtoday=0 # Accumulated power usage (Actual Power P14) today
 #UDP SETUP
 UDPaddress='255.255.255.255'
-UDPport=2000
+UDPport="your preferred port number"
 UDPtimeout=1
 #Timings for updating CSV files
 MinNow=None # Current minute
