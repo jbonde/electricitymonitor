@@ -26,10 +26,10 @@ Key		Type	Generation	Key
 
 Connect your RPi serial port to the CCC connector at the Meter like this:
 
-CCC		RPipin		GPIO	Function (RPi)
-6		6				GND
-2		8			 14		Data from RPi (Tx)
-5		10			15		Data from Meter (Rx)
+CCC		RPipin	  GPIO	    Function (RPi)
+6        6        GND
+2        8        14		Data from RPi (Tx)
+5       10        15	    Data from Meter (Rx)
  
 For a RPi4 the above serial port to use is called ttyS0 when listening to the Meter. GPIO14 is not necessary in this setup but can be used for other applications that makes queries for the Meter.
 
