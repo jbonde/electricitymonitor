@@ -12,12 +12,12 @@ First of all Push messages needs to be enabled from the meter even though the do
 
 So a message like this
 
-|KeyType| Generation Key|
-| --- | --- |
-| 64 1 | 0x34706890A462483973431E01C8914E21 |
-| 65 1 | 0x946F0B5C495176089391783F32C4E33A |
+| Key | Type | Generation Key|
+| --- | --- | --- |
+| 64 | 1 | 0x34706890A462483973431E01C8914E21 |
+| 65 | 1 | 0x946F0B5C495176089391783F32C4E33A |
 
-Should be reformatted to (Sorry, tabs don't show here so click edit)
+Should be reformatted to 
 
 Key		Type	Generation	Key
 64		1		0x			34706890A462483973431E01C8914E21
