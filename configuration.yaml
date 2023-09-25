@@ -1,0 +1,6 @@
+sensor:
+  - platform: command_line
+    name: Power now UDP
+    unique_id: "power_now_udp"
+    scan_interval: 1  # Set the interval in seconds
+    command: "python3 /config/scripts/powernowudp.py" 
