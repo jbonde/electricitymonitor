@@ -52,7 +52,7 @@ python main.py -S ‘/dev/ttyS0:2400:8None1’
 
 Please notice 2400 bps is important. The above should give some initial readings (encrypted) to confirm that the connection is working.
 
-Finally run the application with the encryption keys (maybe you need to swop A and B).
+Finally run the application with the encryption keys.
 
 python main.py -S ‘/dev/ttyS0:2400:8None1’ -B 34706890A462483973431E01C8914E21 -A 946F0B5C495176089391783F32C4E33A
 
