@@ -8,28 +8,27 @@ The key electricity data is Meter status (as seen on the display) and actual tot
 
 First of all Push messages needs to be enabled from the meter even though the documentation indicates that this is done by default. So contact your power supplier and request push messages and also two keys as the information is encrypted. You will then get a mail from Kamstrup with the keys. It comes in a tabulated setup which will probably be distorted in the mail.
 
-So a message like this
+So the message may look like this
 
 | Key | Type | Generation Key|
 | --- | --- | --- |
 | 64 | 1 | 0x34706890A462483973431E01C8914E21 |
 | 65 | 1 | 0x946F0B5C495176089391783F32C4E33A |
 
-
-should be interpreted as 
+The Generation Key is wrong and should be splitted to 
 
 | Key | Type | 0x | Generation Key |
 | --- | --- | --- | --- |
 | 64	| 1	| 0x	| 34706890A462483973431E01C8914E21 |
 | 65 | 1	| 0x	| 946F0B5C495176089391783F32C4E33A |
 
-You only need the Generation Key
+You need the Generation Key for these two keys:
 
 64 = gpk60 = encryption_key
 
 65 = gpk61 = authentication_key
 
-Connect your RPi serial port to the CCC connector at the Meter like this:
+Now connect your RPi serial port to the CCC connector at the Meter like this:
 
 | CCC |	RPipin | GPIO | Function (RPi) |
 | --- | --- | --- | --- |
@@ -39,9 +38,9 @@ Connect your RPi serial port to the CCC connector at the Meter like this:
 
 For a RPi4 the above serial port to use is called ttyS0 when listening to the Meter. GPIO14 is not necessary in this setup but can be used for other applications that makes queries for the Meter.
 
-For listening to the Meter Gurux has a good library that can be installed from https://github.com/Gurux/Gurux.DLMS.Python and they also have an excellent support so sign up at the forum if you have troubles. I didn’t succeed with a RPi3 with Gurux but switching to a RPi4 suddenly made things going.
+For listening to the Meter Gurux has a good library that can be installed from https://github.com/Gurux/Gurux.DLMS.Python and they also have an excellent support so sign up at the forum if you have troubles. A RPi3 will not work so go with a RPi4 or RPi0W.
 
-When ready you can make a test drive in order to see if the Meter is pushing messages which it should do every 10 sec. I prefer connecting to the RPi with SSH and Putty and here at the command prompt first change directory to the Gurux listener script:
+When ready you can make a test drive in order to see if the Meter is pushing messages which it should do every 10 sec. Connect to the RPi with SSH and Putty and at the command prompt first change directory to the Gurux listener script:
 
 cd /home/pi/Gurux.DLMS.Python/Gurux.DLMS.Push.Listener.Example.python
 
@@ -59,11 +58,11 @@ Finally run the application with the encryption keys (maybe you need to swop A a
 
 python main.py -S ‘/dev/ttyS0:2400:8None1’ -B 34706890A462483973431E01C8914E21 -A 946F0B5C495176089391783F32C4E33A
 
-In my case I needed to swop -A and -B as encryption_key and authentication_key was mixed up probably by Kamstrup. You will then see readings presented in different formats. Each Data Object has its own ID as can be seen at page 4 in this list: https://radiuselnet.dk/wp-content/uploads/DLMS-COSEM.pdf
+You might need to swop -A and -B as encryption_key and authentication_key can be mixed up probably by Kamstrup. You will then see readings presented in different formats. Each Data Object has its own ID as can be seen at page 4 in this list: https://radiuselnet.dk/wp-content/uploads/DLMS-COSEM.pdf
 
 Meter status (as seen on the display) and actual power consumption are all represented by number 14 in the list.
 
-My current python script is developed thanks to Gurux (see installation notes at end of code)
+The current python script is developed thanks to Gurux (see installation notes at end of code)
 
 ## For those using HOME ASSISTANT
 
