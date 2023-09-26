@@ -56,9 +56,9 @@ Finally run the application with the encryption keys.
 
 python main.py -S ‘/dev/ttyS0:2400:8None1’ -B 34706890A462483973431E01C8914E21 -A 946F0B5C495176089391783F32C4E33A
 
-You might need to swop -A and -B as encryption_key and authentication_key can be mixed up probably by Kamstrup. You will then see readings presented in different formats. Each Data Object has its own ID as can be seen at page 4 in this list: https://radiuselnet.dk/wp-content/uploads/DLMS-COSEM.pdf
+You might need to swop -A and -B as encryption_key and authentication_key can be mixed up probably by Kamstrup. You will then see readings presented in different formats. Each Data Object has its own ID as can be seen at page 4 in this list: https://radiuselnet.dk/wp-content/uploads/DLMS-COSEM.pdf 
 
-Meter status (as seen on the display) and actual power consumption are all represented by number 14 in the list.
+Meter status (as seen on the display) and actual power consumption are all represented by number 14 in the list. You need to convert each number to hex and use space instead of dot. Also leave a space at end, so 1.1.1.8.0.255 gives "01 01 01 08 00 FF " when using it as a condition in Python.
 
 The python script uploaded here (meter.py) is developed thanks to Gurux (see installation notes at end of code)
 
