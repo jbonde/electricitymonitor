@@ -1,10 +1,10 @@
 # Electricity Monitor
 
-Using a Raspberry Pi for monitoring a Kamstrup Omnipower Electricity Meter.
+Using a Raspberry Pi for monitoring a Kamstrup Omnipower Electricity Meter. A RPi3 will not work so go with a RPi4 or RPi0W. 
 
-The key electricity data is Meter status (as seen on the display) and actual total power consumption plus consumption for each phase and data from the Meter is converted to readable raw data so it can be used directly by other applications. Then data can simply be shared with other devices like Home Assistant via UDP or as plain csv files etc.
+The key electricity data we are looking for is Meter status (as seen on the display) and actual total power consumption plus consumption for each phase. Data from the Meter must be converted to readable raw data so it can be used directly by other applications and simply shared with other devices like Home Assistant via UDP or as plain csv files etc.
 
-First of all Push messages needs to be enabled from the meter even though the documentation indicates that this is done by default. So contact your power supplier and request push messages and also two keys as the information is encrypted. You will then get a mail from Kamstrup with the keys. It comes in a tabulated setup which will probably be distorted in the mail.
+First of all Push messages need to be enabled from the meter even though the documentation indicates that this is done by default. So contact your power supplier and request push messages and also two keys as the information is encrypted. You will then get a mail from Kamstrup with the keys. It comes in a tabulated setup which will probably be distorted in the mail.
 
 So the message may look like this
 
@@ -20,7 +20,7 @@ The Generation Key is wrong and should be splitted to
 | 64	| 1	| 0x	| 34706890A462483973431E01C8914E21 |
 | 65 | 1	| 0x	| 946F0B5C495176089391783F32C4E33A |
 
-You need the Generation Key for these two keys:
+Use the Generation Key for these two keys:
 
 64 = gpk60 = encryption_key
 
@@ -36,7 +36,7 @@ Now connect your RPi serial port to the CCC connector at the Meter like this:
 
 For a RPi4 the above serial port to use is called ttyS0 when listening to the Meter. GPIO14 is not necessary in this setup but can be used for other applications that makes queries for the Meter.
 
-For listening to the Meter Gurux has a good library that can be installed from https://github.com/Gurux/Gurux.DLMS.Python and they also have an excellent support so sign up at the forum if you have troubles. A RPi3 will not work so go with a RPi4 or RPi0W.
+For listening to the Meter Gurux has a good library that can be installed from https://github.com/Gurux/Gurux.DLMS.Python and they also have an excellent support so sign up at the forum if you have troubles. 
 
 When ready you can make a test drive in order to see if the Meter is pushing messages which it should do every 10 sec. Connect to the RPi with SSH and Putty and at the command prompt first change directory to the Gurux listener script:
 
