@@ -60,7 +60,7 @@ You might need to swop -A and -B as encryption_key and authentication_key can be
 
 Meter status (as seen on the display) and actual power consumption are all represented by number 14 in the list.
 
-The current python script is developed thanks to Gurux (see installation notes at end of code)
+The python script uploaded here (meter.py) is developed thanks to Gurux (see installation notes at end of code)
 
 ## For those using HOME ASSISTANT
 
