@@ -1,8 +1,6 @@
 # Electricity Monitor
 
-How to use a Raspberry Pi for reading a Kamstrup Omnipower Electricity Meter
-
-Realising that the documentation for the different components and packages is very scarce I have made this brief summary of how I managed to pick up readings from my Omnipower Meter with a Raspberry Pi.
+Using a Raspberry Pi for monitoring a Kamstrup Omnipower Electricity Meter.
 
 The key electricity data is Meter status (as seen on the display) and actual total power consumption plus consumption for each phase and data from the Meter is converted to readable raw data so it can be used directly by other applications. Then data can simply be shared with other devices like Home Assistant via UDP or as plain csv files etc.
 
