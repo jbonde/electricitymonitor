@@ -4,11 +4,9 @@ How to use a Raspberry Pi for reading a Kamstrup Omnipower Electricity Meter
 
 Realising that the documentation for the different components and packages is very scarce I have made this brief summary of how I managed to pick up readings from my Omnipower Meter with a Raspberry Pi.
 
-For me the interesting electricity data is Meter status (as seen on the display) and actual total power consumption plus consumption for each phase.
+The key electricity data is Meter status (as seen on the display) and actual total power consumption plus consumption for each phase and data from the Meter is converted to readable raw data so it can be used directly by other applications. Then data can simply be shared with other devices like Home Assistant via UDP or as plain csv files etc.
 
-I prefer to extract the data as readable raw data so it can be used directly by other applications like Home Assistant. Then data can simply be shared with other devices and web services over UDP or as plain csv files etc.
-
-First of all Push messages needs to be enabled from the meter even though the documentation indicates that this is done by default. So contact your power supplier and request push messages and also two keys as the information is encrypted. You will then get a mail from Kamstrup with the keys. It comes in a tabulated setup which will be probably distorted in the mail.
+First of all Push messages needs to be enabled from the meter even though the documentation indicates that this is done by default. So contact your power supplier and request push messages and also two keys as the information is encrypted. You will then get a mail from Kamstrup with the keys. It comes in a tabulated setup which will probably be distorted in the mail.
 
 So a message like this
 
@@ -31,7 +29,6 @@ Should be reformatted to
 65 = gpk61 = authentication_key
 
 Connect your RPi serial port to the CCC connector at the Meter like this:
-
 
 | CCC |	RPipin | GPIO | Function (RPi) |
 | --- | --- | --- | --- |
