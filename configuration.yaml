@@ -1,6 +1,13 @@
-sensor:
-  - platform: command_line
-    name: Power now UDP
-    unique_id: "power_now_udp"
-    scan_interval: 1  # Set the interval in seconds
-    command: "python3 /config/scripts/powernowudp.py" 
+command_line:
+  - sensor:
+      name: UDPpower
+      command: "python /config/scripts/powernowudp.py" 
+      scan_interval: 2  # Set the interval in seconds
+      unit_of_measurement: "Wh"
+      value_template: "{{ value }}"
+  - sensor:
+      name: UDPpowertoday
+      command: "python3 /config/scripts/powertodayudp.py"  
+      unit_of_measurement: "Wh"
+      scan_interval: 60  # Set the interval in seconds
+      value_template: '{{ value }}'
