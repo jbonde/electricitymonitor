@@ -40,7 +40,7 @@ For listening to the Meter Gurux has a good library that can be installed from h
 
 When ready you can make a test drive in order to see if the Meter is pushing messages which it should do every 10 sec. Connect to the RPi with SSH and Putty and at the command prompt first change directory to the Gurux listener script:
 
-cd /home/pi/Gurux.DLMS.Python/Gurux.DLMS.Push.Listener.Example.python
+cd /home/pi/gurux.dlms.python/Gurux.DLMS.Push.Listener.Example.python
 
 Then run the main.py so you can see the options:
 
